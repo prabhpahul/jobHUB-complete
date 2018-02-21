@@ -1,0 +1,37 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name" >Dashboard</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"  >
+
+       <mat-nav-list>
+        <mat-card>Time Manager Pro</mat-card>
+          </mat-nav-list>          
+      <mat-nav-list id="adminList">
+        <button mat-button color="primary" class="my-full-width-menu" [matMenuTriggerFor]="admin"><mat-icon>person</mat-icon>Admin</button>
+        <mat-menu style="background-color: black;"  #admin="matMenu" [overlapTrigger]="false" xPosition="after" yPosition="below"(setPositionClasses) = "pos(posX ,posY)">
+        <button color="accent" mat-menu-item [matMenuTriggerFor]="client">Client</button>
+        
+        </mat-menu>
+
+        <mat-menu #client="matMenu">
+          <button mat-menu-item>Add Client</button>
+          <button mat-menu-item>Client List</button>
+          <button mat-menu-item>Locations</button>
+        </mat-menu>
+          </mat-nav-list>
+
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+          
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+    </div>
+

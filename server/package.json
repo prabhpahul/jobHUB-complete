@@ -1,0 +1,38 @@
+{
+  "name": "starter-postgres-node-angular",
+  "version": "1.0.0",
+  "description": "This is a PEAN stack app boilerplate (PostgreSql, Express, AngularJS and Node.js) based on Express app skeleton.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NehaChopra/pean-boilerplate.git"
+  },
+  "keywords": [
+    "boilerplate"
+  ],
+  "author": "Neha Chopra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NehaChopra/pean-boilerplate/issues"
+  },
+  "homepage": "https://github.com/NehaChopra/pean-boilerplate#readme",
+  "dependencies": {
+    "body-parser": "~1.5.2",
+    "debug": "~2.6.9",
+    "ejs": "^2.5.7",
+    "express": "~4.7.2",
+    "method-override": "~2.1.2",
+    "morgan": "~1.2.2",
+    "pg": "^6.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.33.1",
+    "sequelize-cli": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,0 +1,71 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+.my-full-width-menu {
+      max-width: none;
+    
+    margin-left: -8px;
+    margin-top: 24px;
+    color: slateblue;
+    font-size: 20px;
+}
+mat-sidenav{
+  background-color: #00000024;
+    border: solid;
+    border-color: darkgrey;
+    border-style: ridge;
+    width: 200px;
+}
+
+mat-list-item{
+  padding-left: 25px;
+    padding-top: 5px;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-align: center;
+    /* margin: auto; */
+    color: white
+}
+
+mat-menu-item :hover{
+  background-color: black;
+}
+mat-button :hover{
+  background-color: blue;
+  font-size: 17px;
+}
+
+#adminList{
+      margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

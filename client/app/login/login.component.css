@@ -1,0 +1,72 @@
+#login{
+	text-align: center;
+}
+.container-fluid{
+	background-image: url("https://preview.ibb.co/mdTmFx/50_Beautiful_and_Minimalist_Presentation_Backgrounds_037.jpg");
+}
+button{
+color: #fff!important;
+    background-color: #333!important;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 24px 32px;
+    font-size: 20px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;}
+
+#cardTitle{
+	display: flex;
+    flex-direction: column;
+    background-color: #3f51b5;
+    color: white;
+    font-size: 35px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#formDetails{
+	display: flex;
+    flex-direction: column;
+   
+    width: 80%;
+    align-self: center;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-bottom: 50px;
+    font-size: 20px;
+
+}
+
+.mat-card-title{
+
+}
+.example-container{
+	border: 3px solid ;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    left:0; right:0;
+    top:0; bottom:0;
+	margin:auto;
+    border-color: darkgrey;
+    border-width: 5px;
+    border-style: ridge;
+}
+#loginButton{
+	    width: 50%;
+    font-size: 15px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: 30%;
+}
