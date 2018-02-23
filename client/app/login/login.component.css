@@ -2,7 +2,7 @@
 	text-align: center;
 }
 .container-fluid{
-	background-image: url("https://preview.ibb.co/mdTmFx/50_Beautiful_and_Minimalist_Presentation_Backgrounds_037.jpg");
+
 }
 button{
 color: #fff!important;
@@ -34,7 +34,7 @@ color: #fff!important;
 #formDetails{
 	display: flex;
     flex-direction: column;
-   
+
     width: 80%;
     align-self: center;
     padding-top: 25px;

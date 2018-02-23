@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import{SidebarComponent} from './../sidebar/sidebar.component';
+import {Component} from '@angular/core';
 
+/**
+ * @title Basic menu
+ */
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'menu-overview-example',
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
-	
-  constructor() { }
+export class DashboardComponent {}
 
-  ngOnInit() {
-  	
-  }
 
-}
+/**  Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */
