@@ -4,6 +4,7 @@ import { FormBuilder,FormGroup,FormControl, FormGroupDirective, NgForm, Validato
 import {ErrorStateMatcher} from '@angular/material/core';
 import{SidebarComponent} from './../sidebar/sidebar.component';
 import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,7 +34,7 @@ title = 'Look jQuery Animation working in action!';
       email: this.email,
       password: this.password
     });
-    
+
   }
 
  login(){
@@ -42,7 +43,7 @@ title = 'Look jQuery Animation working in action!';
       res => this.router.navigate(['/login']),
       error => console.log('error')
     );
-	}
- 
+	};
+
 
 }

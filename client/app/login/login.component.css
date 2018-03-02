@@ -1,73 +1,107 @@
-#login{
+.text-center{
+  text-align: center;
+}
+
+.space-bot{
+  margin-bottom: 35px;
+}
+
+.space-top{
+  margin-top: 35px;
+}
+
+/* Title */
+
+h1 {
+    color: white;
+    font-family: monospace;
+    text-transform: none;
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Sign Up */
+
+.container {
+    max-width: 400px;
+    max-height: auto;
+    margin-top: auto;
+}
+
+.alert-danger{
 	text-align: center;
 }
-.container-fluid{
 
-}
-button{
-color: #fff!important;
-    background-color: #333!important;
-    border: none;
-    display: inline-block;
-    outline: 0;
-    padding: 24px 32px;
-    font-size: 20px;
-    vertical-align: middle;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
+.signup-screen {
+	  padding: 20px;
+    padding-bottom: 40px;
+    border-radius: 5px;
     background-color: inherit;
-    text-align: center;
-    cursor: pointer;
-    white-space: nowrap;}
-
-#cardTitle{
-	display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    color: #000000;
-    font-size: 14px;
-		font-style: bold;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.3);
+    color: white;
 }
 
-#formDetails{
-	display: flex;
-    flex-direction: column;
+.btn{
+  border-radius: 2px;
+}
 
-    width: 80%;
-    align-self: center;
-    padding-top: 25px;
-    padding-right: 25px;
-    padding-left: 25px;
-    padding-bottom: 50px;
-    font-size: 20px;
+.cancel{
+  background-color: #df405a;
+}
+
+.done{
+  background-color: #5CAB7D;
+}
+
+.done:hover{
+  background-color: #6dc793;
+}
+
+.done:focus{
+  background-color: #6dc793;
+}
+
+.cancel:hover{
+  background-color: #f0435f;
+}
+
+.cancel:focus{
+  background-color: #f0435f;
+}
+
+.input-group {
+    width:100%;
+}
+
+.input-group .ng-invalid {
+    border: 2px solid #e74c3c;
+    border-radius: 3px;
+}
+
+/* Error Box */
+
+.alert{
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  border-color: #e85a71;
+  background-color:  #e85a71;
+  color: white;
 
 }
 
-.mat-card-title{
+.help-block {
+    font-size: 12px;
+    color: white
+}
 
+signup-container{
+	color:#f5f5f5;
 }
-.example-container{
-	border: 3px solid ;
-    padding: 10px;
-    text-align: center;
-    width: 50%;
-    left:0; right:0;
-    top:0; bottom:0;
-	margin:auto;
-    border-color: darkgrey;
-    border-width: 5px;
-    border-style: ridge;
-}
-#loginButton{
-	    width: 50%;
-    font-size: 15px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 50px;
-    margin-left: 30%;
+
+button{
+	display:flex;
+	margin: auto;
 }
