@@ -9,3 +9,25 @@ a{
   font-size: 18px;
   text-transform:full-width;
 }
+
+#centerdiv{
+
+    position: absolute;
+    top:50%;
+    left:50%;
+    /* height: 5em;
+    width: 240em; */
+    margin-top: -50px;
+    margin-left: -100px;
+    width: 50%;
+    border:1px solid #000000;
+    background-color: ;
+    /* top: 50%;
+    left: 50%;
+    width:30em;
+    height:18em; */
+}
+
+id{
+  color: 
+}
