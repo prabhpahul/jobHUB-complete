@@ -21,13 +21,13 @@
             </mat-form-field>
 
             <mat-form-field>
-              <input matInput placeholder="Password">
+              <input matInput placeholder="Password" [formControl]="password" required>
             </mat-form-field>
-
-            <div class="signup-button">
-            <button mat-button>Join Now</button>
-          </div>
         </div>
+            <div class="signup-button">
+            <button md-raised-button>Join Now!</button>
+            </div>
+
               </div>
             </div>
         </div>

@@ -15,14 +15,18 @@ a{
     position: absolute;
     top:50%;
     left:50%;
-    /* height: 5em;
-    width: 240em; */
+    height: 5em;
+    width: 300em;
     margin-top: -50px;
-    margin-left: -100px;
+    margin-left: -330px;
+    margin-right: 50px;
     width: 50%;
-    border:1px solid #000000;
-    background-color: ;
-    /* top: 50%;
+    background-color: inherit;
+    box-shadow: 0 1px 6px rgba(0,0,0,.3);
+    border-radius: 10px;
+    padding-left: auto;
+    padding-right: auto;
+      /* top: 50%;
     left: 50%;
     width:30em;
     height:18em; */
