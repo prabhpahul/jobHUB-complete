@@ -4,6 +4,7 @@ import { FormBuilder,FormGroup,FormControl, FormGroupDirective, NgForm, Validato
 import {ErrorStateMatcher} from '@angular/material/core';
 import{SidebarComponent} from './../sidebar/sidebar.component';
 import { UserService } from '../services/user.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ import { UserService } from '../services/user.service';
 
 
 export class LoginComponent implements OnInit {
-title = 'Look jQuery Animation working in action!';
+  
+
   loginForm: FormGroup;
   email = new FormControl('', [
     Validators.required,
@@ -26,7 +28,9 @@ title = 'Look jQuery Animation working in action!';
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private user: UserService
+              private user: UserService,
+              public dialogRef: MatDialogRef<LoginComponent>
+              
               ) { }
 
   ngOnInit() {

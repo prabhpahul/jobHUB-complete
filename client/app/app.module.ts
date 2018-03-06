@@ -19,6 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SidebarComponent,
     DashboardComponent
   ],
+  entryComponents: [DashboardComponent, LoginComponent],
   imports: [
     BrowserModule,
     MaterialModule,

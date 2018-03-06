@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import{LoginComponent} from '../login/login.component';
 
-/**
- * @title Basic menu
- */
 @Component({
   selector: 'menu-overview-example',
   templateUrl: 'dashboard.component.html',
@@ -10,6 +9,9 @@ import {Component} from '@angular/core';
 })
 export class DashboardComponent
 {
+
+ constructor(public dialog: MatDialog,
+ ){}
 foods = [
     {value: 'Accounting and Finance', viewValue: 'Accounting and Finance'},
     {value: 'Administrative and Clerical', viewValue: 'Administrative and Clerical'},
@@ -65,6 +67,18 @@ locations = [
 
 
 ];
+    openDialog(): void {
+    let dialogRef = this.dialog.open(LoginComponent, {
+      width: '500px',
+      height: '500px',
+      data: { }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
+  }
 
 }
 

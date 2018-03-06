@@ -121,3 +121,14 @@ button{
   color:white;
   text-decoration-color: white;
 }
+
+.mat-dialog-actions {
+    padding: 58px;
+    padding-top: 58px;
+    padding-right: 58px;
+    padding-bottom: 58px;
+    padding-left: 58px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
