@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import{LoginComponent} from '../login/login.component';
-
+import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 @Component({
   selector: 'menu-overview-example',
   templateUrl: 'dashboard.component.html',
@@ -10,8 +11,16 @@ import{LoginComponent} from '../login/login.component';
 export class DashboardComponent
 {
 
+ industry: String;
+ role:String;
+ city:String;
+ showLogin:boolean;
  constructor(public dialog: MatDialog,
- ){}
+ private router: Router,
+  public afAuth: AngularFireAuth
+ ){
+  this.showLogin = true;
+ }
 foods = [
     {value: 'Accounting and Finance', viewValue: 'Accounting and Finance'},
     {value: 'Administrative and Clerical', viewValue: 'Administrative and Clerical'},
@@ -31,41 +40,27 @@ foods = [
                 ];
 
 roles = [
-                {value: 'Accounting Anaylst', viewValue: 'Accounting Anaylst'},
-                {value: 'Assistant Accounting Manager', viewValue: 'Assistant Accounting Manager'},
-                {value: 'Administrative Assistant', viewValue: 'Culture and leisure'},
-                {value: 'Administrative Clerk', viewValue: 'Administrative Clerk'},
-                {value: 'Administration Manager', viewValue: 'Administration Manager'},
-                {value: 'Graphic Arts Technician', viewValue: 'Graphic Arts Technician'},
-                {value: 'Customer Service Agent', viewValue: 'Customer Service Agent'},
-                {value: 'Customer Service Analyst', viewValue: 'Customer Service Analyst'},
-                {value: 'Engineering Technologist', viewValue: 'Engineering Technologist'},
-                {value: 'Engineering Analyst', viewValue: 'Engineering Anaylst'},
-                {value: 'Data Scientist', viewValue: 'Data Scientist'},
-                {value: 'Environmental Scientist', viewValue: 'Environmental Scientist'},
-                {value: 'Technology Architect', viewValue: 'Technology Architect'},
-                {value: 'Technology Lead', viewValue: 'Technology Lead'},
-                {value: 'Training Consultant', viewValue: 'Training Consultant'}
+        {value: 'Accounting Anaylst', viewValue: 'Accounting Anaylst'},
+        {value: 'Assistant Accounting Manager', viewValue: 'Assistant Accounting Manager'},
+        {value: 'Administrative Assistant', viewValue: 'Culture and leisure'},
+        {value: 'Administrative Clerk', viewValue: 'Administrative Clerk'},
+        {value: 'Administration Manager', viewValue: 'Administration Manager'},
+        {value: 'Graphic Arts Technician', viewValue: 'Graphic Arts Technician'},
+        {value: 'Customer Service Agent', viewValue: 'Customer Service Agent'},
+        {value: 'Customer Service Analyst', viewValue: 'Customer Service Analyst'},
+        {value: 'Engineering Technologist', viewValue: 'Engineering Technologist'},
+        {value: 'Engineering Analyst', viewValue: 'Engineering Anaylst'},
+        {value: 'Data Scientist', viewValue: 'Data Scientist'},
+        {value: 'Environmental Scientist', viewValue: 'Environmental Scientist'},
+        {value: 'Technology Architect', viewValue: 'Technology Architect'},
+        {value: 'Technology Lead', viewValue: 'Technology Lead'},
+        {value: 'Training Consultant', viewValue: 'Training Consultant'}
           ];
 
 locations = [
-  {value: 'Barrie', viewValue: 'Barrie'},
-  {value: 'Brampton', viewValue: 'Brampton'},
-  {value: 'Burlington', viewValue: 'Burlington'},
-  {value: 'Cambridge', viewValue: 'Cambridge'},
-  {value: 'Guelph', viewValue: 'Guelph'},
-  {value: 'Hamilton', viewValue: 'Hamilton'},
-  {value: 'Kitchener', viewValue: 'Kitchener'},
-  {value: 'London', viewValue: 'London'},
-  {value: 'North York', viewValue: 'North York'},
-  {value: 'Mississauga', viewValue: 'Mississauga'},
-  {value: 'Ottawa', viewValue: 'Ottawa'},
-  {value: 'Scarborough', viewValue: 'Scarborough'},
   {value: 'Toronto', viewValue: 'Toronto'},
-  {value: 'Vaughan', viewValue: 'Vaughan'},
-  {value: 'Waterloo', viewValue: 'Waterloo'},
-
-
+  {value: 'Vancouver', viewValue: 'Vancouver'},
+  {value: 'Montreal', viewValue: 'Montreal'},
 ];
     openDialog(): void {
     let dialogRef = this.dialog.open(LoginComponent, {
@@ -80,10 +75,14 @@ locations = [
     });
   }
 
+  search(){
+    console.log(this.city,this.industry,this.role);
+     this.router.navigate(['/list', this.industry,this.role,this.city]);
+  }
+  logout() {
+     this.afAuth.auth.signOut();
+  }
+
 }
 
 
-
-/**  Copyright 2018 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */

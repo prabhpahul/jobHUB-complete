@@ -3,16 +3,19 @@
 <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <a><img src="https://image.ibb.co/bDBY0x/logo_pink1.png" height="70" width="70"  alt="" border="0"></a>
           <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Job Analytics</a></li>
-                <li><a href="#">Employers</a></li>
-                <li><button mat-raised-button (click)="openDialog()">Sign In</button></li>
-                <li><a href="#">Register</a></li>
+                <li><button mat-raised-button routerLink="/analysis" routerLinkActive="active">Job Analysis</button></li>
+                <li><button mat-raised-button>Employers</button></li>
+                <li><button *ngIf="showLogin" mat-raised-button (click)="openDialog()">Sign In</button></li>
+                <li><button mat-raised-button>Register</button></li>
+                <li *ngIf="afAuth.authState | async;">
+                <button  mat-raised-button (click)="logout()">Logout</button>
+              </li>
           </ul>
 </div>
 
 <div id="centerdiv">
 <mat-form-field>
-  <mat-select placeholder="Industry Type">
+  <mat-select [(ngModel)]="industry" placeholder="Industry Type">
     <mat-option *ngFor="let food of foods" [value]="food.value">
       {{ food.viewValue }}
     </mat-option>
@@ -20,7 +23,7 @@
 </mat-form-field>
 
 <mat-form-field>
-  <mat-select placeholder="Type, Skills">
+  <mat-select [(ngModel)]="role" placeholder="Type, Skills">
     <mat-option *ngFor="let role of roles" [value]="role.value">
       {{ role.viewValue }}
     </mat-option>
@@ -28,13 +31,13 @@
 </mat-form-field>
 
 <mat-form-field>
-  <mat-select placeholder="Type, Skills">
+  <mat-select [(ngModel)]="city" placeholder="City">
     <mat-option *ngFor="let location of locations" [value]="location.value">
       {{ location.viewValue }}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
-<button mat-raised-button id="searchjobs">Search Jobs</button>
+<button mat-fab color="primary" (click)="search()">Search</button>
 
 </div>
