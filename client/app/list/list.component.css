@@ -1,0 +1,12 @@
+#container{
+	background-color: white;
+	min-height: 100%;
+}
+.table thead
+	{
+    background-color: black;
+    color: white;
+}
+.displayId{
+	padding-left: 30px;
+}

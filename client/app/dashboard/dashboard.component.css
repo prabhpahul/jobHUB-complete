@@ -13,7 +13,7 @@ a{
 #centerdiv{
 
     position: absolute;
-    top:50%;
+    top:40%;
     left:50%;
     height: 5em;
     width: 300em;
@@ -26,8 +26,44 @@ a{
     border-radius: 10px;
     padding-left: auto;
     padding-right: auto;
+    display: flex;
+    justify-content: inherit;
+    flex-direction: row;
       /* top: 50%;
     left: 50%;
     width:30em;
     height:18em; */
+}
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    font-size: 18px;
+    padding-left: 20px;
+    /* color: white; */
+}
+.mat-raised-button{
+  background-color: inherit;
+  color: white;
+}
+.mat-fab {
+    min-width: 0;
+    border-radius: 50%;
+    width: 80px;
+    height: 56px;
+    padding: 0;
+    flex-shrink: 0;
+    margin-left: 25px;
+    margin-top: 5px;
+    z-index: 25px;
+    padding-left: 2;
+}
+.mat-select-value {
+    display: table-cell;
+    max-width: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: floralwhite !important;
 }

@@ -1,0 +1,32 @@
+.container{
+	background-color: #FAF9F9;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.chart {
+    width: 100%;
+    min-height: 165px;
+    padding-bottom: 0;
+}
+
+.chart-legend li span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+    display: relative;
+    box-sizing: border-box;
+    /* padding: 0 16px; */
+    width: 100%;
+    align-items: center;
+    white-space: nowrap;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 80px;
+}
+.example-card {
+  max-width: 800px;
+}

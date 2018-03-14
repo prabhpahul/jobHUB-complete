@@ -1,0 +1,40 @@
+
+
+<div id="container">
+  <mat-spinner *ngIf="start"></mat-spinner>
+	<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Search Results  </span>
+</mat-toolbar-row>
+ <mat-toolbar-row>
+    <span>Industry : {{industry}}</span> <span class="displayId">Role : {{role}}  </span> <span class="displayId">City: {{city}}  </span>
+</mat-toolbar-row>
+
+</mat-toolbar>
+  <table class="table table-sm table-dark" style="padding-top: 50px;">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">#</th>
+      <th scope="col">Company</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Experience</th>
+      <th scope="col">Created</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Satisfaction Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of jobs | async" >
+    <td>{{item.index}}</td>
+      <td>{{item.Company}}</td>
+      <td>{{item.Contact}}</td>
+      <td>{{item.Salary}}</td>
+      <td>{{item.Experience}}</td>
+      <td>{{item.Created}}</td>
+      <td>{{item.phone}}</td>
+      <td> <button mat-mini-fab color="primary">Click</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>

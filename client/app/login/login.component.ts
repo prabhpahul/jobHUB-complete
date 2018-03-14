@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder,FormGroup,FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import{SidebarComponent} from './../sidebar/sidebar.component';
 import { UserService } from '../services/user.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,11 +29,12 @@ export class LoginComponent implements OnInit {
     Validators.required,
     Validators.minLength(6)
   ]);
-
+ error:any;
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private user: UserService,
-              public dialogRef: MatDialogRef<LoginComponent>
+              public dialogRef: MatDialogRef<LoginComponent>,
+              public afAuth: AngularFireAuth
               
               ) { }
 
@@ -38,15 +43,13 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     });
-
+    console.log(this.afAuth.authState);
   }
 
  login(){
  	console.log(this.loginForm.value);
-  this.user.register(this.loginForm.value).subscribe(
-      res => this.router.navigate(['/login']),
-      error => console.log('error')
-    );
+  this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  
 	};
 
 
