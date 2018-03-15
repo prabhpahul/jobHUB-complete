@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import{LoginComponent} from '../login/login.component';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'menu-overview-example',
   templateUrl: 'dashboard.component.html',
@@ -15,9 +15,10 @@ export class DashboardComponent
  role:String;
  city:String;
  showLogin:boolean;
+
  constructor(public dialog: MatDialog,
  private router: Router,
-  public afAuth: AngularFireAuth
+  public auth: AuthService
  ){
   this.showLogin = true;
  }
@@ -80,7 +81,7 @@ locations = [
      this.router.navigate(['/list', this.industry,this.role,this.city]);
   }
   logout() {
-     this.afAuth.auth.signOut();
+     this.auth.logout();
   }
 
 }

@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ListComponent } from './list/list.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { JobAnalysisComponent } from './job-analysis/job-analysis.component';
+import { AuthService } from './services/auth.service';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { JobAnalysisComponent } from './job-analysis/job-analysis.component';
     SidebarComponent,
     DashboardComponent,
     ListComponent,
-    JobAnalysisComponent
+    JobAnalysisComponent,
+    RegisterComponent
   ],
   entryComponents: [DashboardComponent, LoginComponent],
   imports: [
@@ -43,7 +46,7 @@ import { JobAnalysisComponent } from './job-analysis/job-analysis.component';
     AngularFireAuthModule,
     ChartsModule
   ],
-  providers: [UserService],
+  providers: [UserService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

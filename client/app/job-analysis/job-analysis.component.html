@@ -6,7 +6,7 @@
   <span style="margin-left: 35%;">Job Analytics</span>
 </mat-toolbar>
 	<div class="row" id="chart">
-	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-top: 25px;">
+	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 25px;">
 	  		<div class="chart-div">
 	   			<div id="" style="" class="chart">
 	   			 <mat-card class="example-card">	
@@ -30,7 +30,7 @@
 	 		 	</div>
 	 		</div>
 		</div>
-		 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-top: 25px;">
+		 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 25px;">
             <div class="chart-div">
                 <div id="" class="chart2" style="">
                 	 <mat-card class="example-card">	
@@ -49,10 +49,29 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 25px;">
+            <div class="chart-div">
+                <div id="" class="chart2" style="">
+                	 <mat-card class="example-card">	
+	   				<mat-card-header>
+					    <mat-card-title>Total Crime Rate Analysis </mat-card-title>
+					    <mat-card-subtitle>Citiwise Breakdown</mat-card-subtitle>
+					  </mat-card-header>
+					  <mat-card-content>
+					   <canvas baseChart [data]="doughnutChartData"
+			              [labels]="doughnutChartLabels"
+			              [chartType]="doughnutChartType">
+              			</canvas>
+					  </mat-card-content>
+					</mat-card>
+                    
+                </div>
+            </div>
+        </div>
 	</div>
 
 	<div class="row" id="chart">
-	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-top: 25px;">
+	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 25px;">
 	  		<div class="chart-div">
 	   			<div id="" style="" class="chart">
 					 <mat-card class="example-card">	
@@ -75,13 +94,31 @@
 	 		 	</div>
 	 		</div>
 		</div>
-		 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-top: 25px;">
+		 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 25px;">
             <div class="chart-div">
                 <div id="" class="chart2" style="">
                    <mat-card class="example-card">	
 	   				<mat-card-header>
 					    <mat-card-title>Salary Scope </mat-card-title>
 					    <mat-card-subtitle>Industry Breakdown</mat-card-subtitle>
+					  </mat-card-header>
+					  <mat-card-content>
+					   <canvas baseChart [data]="doughnutChartData"
+			              [labels]="doughnutChartLabels"
+			              [chartType]="doughnutChartType">
+              			</canvas>
+					  </mat-card-content>
+					</mat-card>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="padding-top: 25px;">
+            <div class="chart-div">
+                <div id="" class="chart2" style="">
+                   <mat-card class="example-card">	
+	   				<mat-card-header>
+					    <mat-card-title>Comapny Rating Data </mat-card-title>
+					    <mat-card-subtitle>Selected City Breakdown</mat-card-subtitle>
 					  </mat-card-header>
 					  <mat-card-content>
 					   <canvas baseChart [data]="doughnutChartData"

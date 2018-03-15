@@ -3,14 +3,19 @@
 <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <a><img src="https://image.ibb.co/bDBY0x/logo_pink1.png" height="70" width="70"  alt="" border="0"></a>
           <ul class="nav navbar-nav navbar-right">
-                <li><button mat-raised-button routerLink="/analysis" routerLinkActive="active">Job Analysis</button></li>
+                <li><button mat-raised-button *ngIf="auth.loggedIn" routerLink="/analysis" routerLinkActive="active">Job Analysis</button></li>
                 <li><button mat-raised-button>Employers</button></li>
-                <li><button *ngIf="showLogin" mat-raised-button (click)="openDialog()">Sign In</button></li>
+                <li><button *ngIf="!auth.loggedIn" mat-raised-button (click)="openDialog()">Sign In</button></li>
                 <li><button mat-raised-button>Register</button></li>
-                <li *ngIf="afAuth.authState | async;">
-                <button  mat-raised-button (click)="logout()">Logout</button>
+                <li *ngIf="auth.loggedIn">
+                <button   mat-raised-button (click)="logout()">Logout</button>
+              </li>
+              <li>
+                <p *ngIf="auth.loggedIn" style="color: white;font-size: 15px;" >Hello {{auth.currentUserName}}</p>
+        
               </li>
           </ul>
+          
 </div>
 
 <div id="centerdiv">

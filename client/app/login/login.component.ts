@@ -10,6 +10,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private user: UserService,
               public dialogRef: MatDialogRef<LoginComponent>,
-              public afAuth: AngularFireAuth
+              public afAuth: AngularFireAuth,
+              public auth: AuthService
               
               ) { }
 
@@ -43,14 +45,14 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     });
-    console.log(this.afAuth.authState);
+    
   }
 
- login(){
- 	console.log(this.loginForm.value);
-  this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  
-	};
+login() {
+    this.auth.login();
 
-
+  }
+  loginUser(){
+   this.auth.loginUserEmail(this.loginForm.value.email,this.loginForm.value.password);
+  }
 }
