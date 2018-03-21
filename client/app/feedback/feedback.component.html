@@ -1,0 +1,52 @@
+<div  class="main">
+<div>
+	<app-toaster [message]="toast.message"></app-toaster>
+</div>
+	<div class="panel-heading">
+	   <h2 mat-dialog-title>Feedback</h2>
+	  </div>
+<div class="container-fluid" style="background-color: #d3d3d333;min-height: 100%">	  
+	<form  novalidate>
+<mat-dialog-content>  
+
+	
+	<h4> I'm Telling You About</h4>		
+			<div id="radioList">
+					 <div class="form-check">
+						  <input class="form-check-input form-lg"  type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+						  <label class="form-check-label" for="exampleRadios1">
+						    A Bug
+						  </label>
+						</div>
+					  <hr class="radio-divider"/>
+					  	<div class="form-check">
+						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+						  <label class="form-check-label" for="exampleRadios2">
+						    An Enhanchement
+						  </label>
+						</div>
+					   <hr class="radio-divider"/>
+					  	<div class="form-check">
+						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+						  <label class="form-check-label" for="exampleRadios3">
+						    Kudos
+						  </label>
+						</div>
+					   <hr class="radio-divider"/>
+					</div>
+				<div>
+					<h4>Your Review <span>( Tips and Guidelines ) </span> </h4>
+					<textarea class="form-control"  rows="10" placeholder="Please Tell Us The Details"></textarea>
+				</div>
+		</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="row">
+ <div class="col-xs-4">
+      <button type="submit" [mat-dialog-close]="true" mat-raised-button style="margin-top: 25px;" (click)="feedback()" color="primary" >Thank You</button>
+    </div>
+   </div>
+</mat-dialog-actions>
+</form>	
+</div>
+</div>

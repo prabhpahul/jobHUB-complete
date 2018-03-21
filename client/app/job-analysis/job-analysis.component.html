@@ -14,10 +14,11 @@
 					    <mat-card-title>Total No of Jobs </mat-card-title>
 					    <mat-card-subtitle>Citiwise Breakdown</mat-card-subtitle>
 					  </mat-card-header>
-					  <mat-card-content>
-					   <canvas baseChart
+					  <mat-card-content >
+					  	<mat-spinner style="padding-left: 15px" *ngIf="!showBarChart"></mat-spinner>
+					   <canvas baseChart *ngIf="showBarChart" 
 				            [datasets]="barChartData"
-				            [labels]="barChartLabels"
+				            [(labels)]="barLabels"
 				            [options]="barChartOptions"
 				            [legend]="barChartLegend"
 				            [chartType]="barChartType"
@@ -36,11 +37,12 @@
                 	 <mat-card class="example-card">	
 	   				<mat-card-header>
 					    <mat-card-title>Total No of Jobs </mat-card-title>
-					    <mat-card-subtitle>Citiwise Breakdown</mat-card-subtitle>
+					    <mat-card-subtitle>Rolewise Breakdown</mat-card-subtitle>
 					  </mat-card-header>
 					  <mat-card-content>
-					   <canvas baseChart [data]="doughnutChartData"
-			              [labels]="doughnutChartLabels"
+					  <mat-spinner style="padding-left: 15px" *ngIf="!showRoleChart"></mat-spinner>
+					   <canvas baseChart [data]="roleChartData" *ngIf="showRoleChart" 
+			              [labels]="roleChartLabels"
 			              [chartType]="doughnutChartType">
               			</canvas>
 					  </mat-card-content>
@@ -76,17 +78,18 @@
 	   			<div id="" style="" class="chart">
 					 <mat-card class="example-card">	
 	   				<mat-card-header>
-					    <mat-card-title>Total No of Jobs </mat-card-title>
-					    <mat-card-subtitle>Role Wise Breakdown</mat-card-subtitle>
+					    <mat-card-title>Total Salary </mat-card-title>
+					    <mat-card-subtitle>City Wise Breakdown</mat-card-subtitle>
 					  </mat-card-header>
 					  <mat-card-content>
-					   <canvas baseChart
-				            [datasets]="barChartData"
-				            [labels]="barChartLabels"
+					  	<mat-spinner style="padding-left: 15px" *ngIf="!averagesalaryChart"></mat-spinner>
+					   <canvas baseChart *ngIf="averagesalaryChart"
+				            [datasets]="salaryData"
+				            [labels]="barLabels"
 				            [options]="barChartOptions"
 				            [legend]="barChartLegend"
 				            [chartType]="barChartType"
-				            [colors]="barChartColors"
+				            [colors]="salaryChartColors"
 				            >
 				         </canvas>
 					  </mat-card-content>
@@ -100,7 +103,7 @@
                    <mat-card class="example-card">	
 	   				<mat-card-header>
 					    <mat-card-title>Salary Scope </mat-card-title>
-					    <mat-card-subtitle>Industry Breakdown</mat-card-subtitle>
+					    <mat-card-subtitle>Role Breakdown</mat-card-subtitle>
 					  </mat-card-header>
 					  <mat-card-content>
 					   <canvas baseChart [data]="doughnutChartData"

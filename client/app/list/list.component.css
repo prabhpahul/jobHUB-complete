@@ -2,11 +2,20 @@
 	background-color: white;
 	min-height: 100%;
 }
-.table thead
-	{
-    background-color: black;
-    color: white;
+
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }
-.displayId{
-	padding-left: 30px;
+.mat-toolbar-row, .mat-toolbar-single-row {
+    display: relative;
+    box-sizing: border-box;
+    /* padding: 0 16px; */
+    width: 100%;
+    align-items: center;
+    white-space: nowrap;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 80px;
 }

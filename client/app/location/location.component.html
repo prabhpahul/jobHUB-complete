@@ -1,0 +1,48 @@
+<div  class="address" [formGroup]="addressForm">
+
+      <div class="row">
+      <div class="col-md-6">
+      <mat-form-field>
+            <input matInput type="text" formControlName="address_1" placeholder="Address"  >
+            <mat-error *ngIf="addressForm.controls.address_1.invalid && addressForm.controls.address_1.touched">
+                 Address is required
+            </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="col-md-6">
+      <mat-form-field> 
+            <input matInput type="text" formControlName="zip" placeholder="Postal Code" >
+            <mat-error *ngIf="addressForm.controls.zip.invalid && addressForm.controls.zip.touched">
+                  Postal Code is required
+            </mat-error>
+      </mat-form-field> 
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-md-6">
+      <mat-form-field>            
+          	<mat-select name="province" id="province" placeholder="Select Province" formControlName="province" [(ngModel)]="selectProvince" (ngModelChange)="populateCities()">
+      				<mat-option *ngFor="let n of data" [value]="n.province">{{n.province}}</mat-option>
+    			   </mat-select>
+            	<mat-error *ngIf="addressForm.controls.province.invalid && addressForm.controls.province.touched">
+                  Please select Province
+            	</mat-error>
+      </mat-form-field> 
+      </div>
+      <div class="col-md-6">
+      <mat-form-field> 
+            	
+      	 	<mat-select formControlName="city" [(ngModel)]="ci" placeholder="Select City">
+
+      				<mat-option *ngFor="let n of selectedprovinceCities?.cities" [value]="n">{{n}}</mat-option>
+    			   </mat-select>
+            	
+	        <mat-error *ngIf="addressForm.controls.city.invalid && addressForm.controls.city.touched">
+	                City is required
+	        </mat-error>
+      </mat-form-field> 
+      </div>
+      </div>
+    
+      
+</div>

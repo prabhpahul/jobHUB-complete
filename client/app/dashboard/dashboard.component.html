@@ -4,9 +4,9 @@
           <a><img src="https://image.ibb.co/bDBY0x/logo_pink1.png" height="70" width="70"  alt="" border="0"></a>
           <ul class="nav navbar-nav navbar-right">
                 <li><button mat-raised-button *ngIf="auth.loggedIn" routerLink="/analysis" routerLinkActive="active">Job Analysis</button></li>
-                <li><button mat-raised-button>Employers</button></li>
+                <li><button (click)="openDialogEmployer()"  mat-raised-button>Employer</button></li>
                 <li><button *ngIf="!auth.loggedIn" mat-raised-button (click)="openDialog()">Sign In</button></li>
-                <li><button mat-raised-button>Register</button></li>
+                <li><button *ngIf="!auth.loggedIn" mat-raised-button (click)="openDialogRegister()">Register</button></li>
                 <li *ngIf="auth.loggedIn">
                 <button   mat-raised-button (click)="logout()">Logout</button>
               </li>
@@ -14,6 +14,7 @@
                 <p *ngIf="auth.loggedIn" style="color: white;font-size: 15px;" >Hello {{auth.currentUserName}}</p>
         
               </li>
+              <li><button (click)="openDialogFeedback()"  mat-raised-button>Feedback</button></li>
           </ul>
           
 </div>

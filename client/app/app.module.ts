@@ -21,6 +21,13 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { JobAnalysisComponent } from './job-analysis/job-analysis.component';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './register/register.component';
+import { ToasterComponent } from './toaster/toaster.component';
+import { EmployersComponent } from './employers/employers.component';
+import { StorageServiceModule} from 'angular-webstorage-service';
+import { LocationComponent } from './location/location.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,11 +36,16 @@ import { RegisterComponent } from './register/register.component';
     DashboardComponent,
     ListComponent,
     JobAnalysisComponent,
-    RegisterComponent
+    RegisterComponent,
+    ToasterComponent,
+    EmployersComponent,
+    LocationComponent,
+    FeedbackComponent
   ],
-  entryComponents: [DashboardComponent, LoginComponent],
+  entryComponents: [DashboardComponent, LoginComponent,EmployersComponent,RegisterComponent,FeedbackComponent],
   imports: [
     BrowserModule,
+    StorageServiceModule,
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -46,7 +58,7 @@ import { RegisterComponent } from './register/register.component';
     AngularFireAuthModule,
     ChartsModule
   ],
-  providers: [UserService,AuthService],
+  providers: [UserService,AuthService,ToasterComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

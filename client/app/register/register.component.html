@@ -1,3 +1,52 @@
-<p>
-  register works!
-</p>
+<div>
+  <app-toaster [message]="auth.toast.message"></app-toaster>
+</div>
+<h2 mat-dialog-title>Your dream job is just few steps away!</h2>
+<form [formGroup]="registerForm" novalidate>
+<mat-dialog-content>
+ <div class="form-group has-feedback">
+    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    <div *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" class="text-danger">
+                  Email is invalid
+     </div>
+  </div>
+
+  <div class="form-group has-feedback">
+    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+     <div *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="text-danger">
+          Password is invalid
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="checkbox icheck icheckbox_square-blue">
+        <label>
+          <input type="checkbox"> Remember Me
+        </label>
+      </div>
+    </div>
+  </div>
+    <!-- /.col -->
+    
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  
+  <div class="row">
+  <div class="col-xs-4">
+  <button mat-button  mat-dialog-close>Cancel</button>
+  </div>
+ <div class="col-xs-4">
+      <button type="submit" [mat-dialog-close]="true" mat-button color="primary"  (click)="registerUser()" >Sign Up</button>
+    </div>
+    
+    <!-- /.col -->
+  
+  </div>
+</mat-dialog-actions>
+</form>

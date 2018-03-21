@@ -5,12 +5,8 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import{SidebarComponent} from './../sidebar/sidebar.component';
 import { UserService } from '../services/user.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
 import { AuthService } from '../services/auth.service';
+import { ToasterComponent } from '../toaster/toaster.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,8 +31,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private user: UserService,
               public dialogRef: MatDialogRef<LoginComponent>,
-              public afAuth: AngularFireAuth,
-              public auth: AuthService
+              public auth: AuthService,
+              public toaster: ToasterComponent
               
               ) { }
 
@@ -50,9 +46,12 @@ export class LoginComponent implements OnInit {
 
 login() {
     this.auth.login();
+     this.toaster.setMessage('Logged In successfully.', 'success');
 
   }
   loginUser(){
    this.auth.loginUserEmail(this.loginForm.value.email,this.loginForm.value.password);
+   this.toaster.setMessage('Logged In successfully.', 'success');
   }
+
 }
