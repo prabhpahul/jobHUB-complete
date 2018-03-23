@@ -25,22 +25,11 @@ itemsRef: AngularFireList<any>;
     
   ]);
 industries = [
-        {value: 'Accounting and Finance', viewValue: 'Accounting and Finance'},
-        {value: 'Administrative and Clerical', viewValue: 'Administrative and Clerical'},
-        {value: 'Arts, Media and Entertainment', viewValue: 'Arts, Media and Entertainment'},
-        {value: 'Customer Service', viewValue: 'Customer Service'},
-        {value: 'Engineering', viewValue: 'Engineering'},
-        {value: 'Environmental', viewValue: 'Environmental'},
-        {value: 'Financial Services', viewValue: 'Financial Services'},
-        {value: 'Healthcare Services and Wellness', viewValue: 'Healthcare Services and Wellness'},
-        {value: 'Insurance', viewValue: 'Insurance'},
-        {value: 'Legal', viewValue: 'Legal'},
-        {value: 'Manufacturing', viewValue: 'Manufacturing'},
-        {value: 'Sales and Business Development', viewValue: 'Sales and Business Development'},
-        {value: 'Science and research', viewValue: 'Science and research'},
-        {value: 'Technology and Digital Media', viewValue: 'Technology and Digital Media'},
-        {value: 'Training and Education', viewValue: 'Training and Education'}
-    ];
+        {value: 'Accounts', viewValue: 'Accounting and Finance'},
+        {value: 'Administrative', viewValue: 'Administrative '},
+        {value: 'Arts', viewValue: 'Arts, Media and Entertainment'},
+        {value: 'customerService', viewValue: 'Customer Service'},
+       ];
 
     roles = [
             {value: 'Accounting Anaylst', viewValue: 'Accounting Anaylst'},
@@ -112,7 +101,7 @@ initAddress(){
   }
 addEmployee(){
   	console.log(this.employeeForm.value);
-  	const itemsRef = this.db.list('jobs');
+  	const itemsRef = this.db.list('/jobs/'+this.employeeForm.value.industry);
     itemsRef.push({ Company: this.employeeForm.value.companyName, Contact: this.employeeForm.value.email, Country:'Canada',
     Created: this.employeeForm.value.doc, Industry: this.employeeForm.value.industry,Experience: this.employeeForm.value.experience, Salary : this.employeeForm.value.salary,
     Title:this.employeeForm.value.role,city:this.employeeForm.value.address.city});

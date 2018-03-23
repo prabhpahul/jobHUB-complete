@@ -5,30 +5,100 @@
  <a routerLink="/" routerLinkActive="active"><img src="https://image.ibb.co/bDBY0x/logo_pink1.png" height="70" width="70"  alt="" border="0"></a> 
   <span style="margin-left: 35%;">Search Result</span>
 </mat-toolbar>
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter(Company Name , Salary , City , Title)">
+  </mat-form-field>
+</div>
+<mat-table #table [dataSource]="dataSource">
 
-<div *ngFor="let item of jobList" style="">
-  <mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar></div>
-    <mat-card-title style="background-color: black;color:white"><mat-label>{{item.Company}}:</mat-label></mat-card-title>
-    <mat-card-subtitle>{{item.Industy}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><span>Title : {{item.Title}}</span></li>
-      <li class="list-group-item"><span>Salary : {{item.Salary}}</span></li>
-      <li class="list-group-item"><span>Experience : {{item.Experience}}</span></li>
-      <li class="list-group-item"><span>Created : {{item.Created}}</span></li>
-      <li class="list-group-item"><span>Contact : {{item.Contact}}</span></li>
-      <li class="list-group-item"><span>Phone : {{item.phone}}</span></li>
-      <li class="list-group-item"><span>City : {{item.city}}</span></li>
-      <li class="list-group-item"><span>Country : {{item.Country}}</span></li>
-</ul>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="satisfaction(item)">Satisfaction Score</button>
-  </mat-card-actions>
-</mat-card>
-<hr/>
+    <!-- Position Column -->
+    <ng-container matColumnDef="index">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.index}} </mat-cell>
+    </ng-container>
+   
+    <!-- Employee Name Column -->
+    <ng-container matColumnDef="company">
+      <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Company}} </mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Title}} </mat-cell>
+    </ng-container>
+    <!-- Salary Column -->
+    <ng-container matColumnDef="salary">
+      <mat-header-cell *matHeaderCellDef> Salary </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Salary}} </mat-cell>
+    </ng-container>
+
+    <!-- Contact Column -->
+    <ng-container matColumnDef="contact">
+      <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Contact}} </mat-cell>
+    </ng-container>
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.phone}} </mat-cell>
+    </ng-container>
+   
+    <!-- doc Column -->
+    <ng-container matColumnDef="doc">
+      <mat-header-cell *matHeaderCellDef> Created </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Created}} </mat-cell>
+    </ng-container>
+    <!-- Experience-->
+    <ng-container matColumnDef="experience">
+      <mat-header-cell *matHeaderCellDef> Experience </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Experience}} </mat-cell>
+    </ng-container>
+     <!-- City Column -->
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+    </ng-container>
+    <!-- Country Column -->
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Country}} </mat-cell>
+    </ng-container>
+    
+    <!-- Click Column -->
+    <ng-container matColumnDef="click">
+      <mat-header-cell *matHeaderCellDef> Click </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-raised-button color="primary" (click)="satisfaction(element)"> Satisfaction Score </button>  </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+   <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+
+</div>
+ <div class="modal fade" #eventModal tabindex="-1" role="dialog" style="opacity: 1;padding-top: 80px;">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="close()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4  class="modal-title">Satisfaction Score</h4>
+                
+            </div>
+        <div class="modal-body">
+               <h3>{{satisfactionScore}}</h3>
+          <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="close()">Close
+                </button>
+          </div>
+     
+    </div> 
+ </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 

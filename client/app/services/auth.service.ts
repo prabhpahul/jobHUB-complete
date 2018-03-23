@@ -19,16 +19,23 @@ export class AuthService {
   }
 login(){
 console.log(this.afAuth);
- this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  this.loggedIn = true;
+ this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+ .then((res) => {
+         console.log(res);
+         this.loggedIn = true;
+  })
   this.currentUserName = this.afAuth.auth.currentUser.displayName;
 };
 
 
-
 loginUserEmail(email,password){
 
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(error=>{
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((res) => {
+         console.log(res);
+         this.loggedIn = true;
+      })
+  .catch(error=>{
    var errorCode = error.code;
   var errorMessage = error.message;
   console.log(errorMessage)
@@ -37,12 +44,17 @@ loginUserEmail(email,password){
    this.toast.setMessage(errorMessage, 'error');
   return;
 });
-this.loggedIn = true;
+
   this.currentUserName = this.afAuth.auth.currentUser.displayName;
 }
 
 registerUserEmail(email,password){
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(error=> {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((res) => {
+         console.log(res);
+         this.loggedIn = true;
+      })
+  .catch(error=> {
    var errorCode = error.code;
   var errorMessage = error.message;
   alert(errorMessage);
@@ -50,7 +62,6 @@ registerUserEmail(email,password){
   this.toast.setMessage('Registeration Failed.', 'error');
   return;
 });
-  this.loggedIn = true;
   this.currentUserName = this.afAuth.auth.currentUser.displayName;
 }
 logout() {

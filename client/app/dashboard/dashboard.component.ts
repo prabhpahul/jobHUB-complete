@@ -16,7 +16,7 @@ export class DashboardComponent
 {
 
  industry: String;
- role:String;
+ salary:String;
  city:String;
  showLogin:boolean;
  
@@ -30,46 +30,37 @@ export class DashboardComponent
  }
 
      
-    foods = [
-        {value: 'Accounting and Finance', viewValue: 'Accounting and Finance'},
-        {value: 'Administrative and Clerical', viewValue: 'Administrative and Clerical'},
-        {value: 'Arts, Media and Entertainment', viewValue: 'Arts, Media and Entertainment'},
-        {value: 'Customer Service', viewValue: 'Customer Service'},
-        {value: 'Engineering', viewValue: 'Engineering'},
-        {value: 'Environmental', viewValue: 'Environmental'},
-        {value: 'Financial Services', viewValue: 'Financial Services'},
-        {value: 'Healthcare Services and Wellness', viewValue: 'Healthcare Services and Wellness'},
-        {value: 'Insurance', viewValue: 'Insurance'},
-        {value: 'Legal', viewValue: 'Legal'},
-        {value: 'Manufacturing', viewValue: 'Manufacturing'},
-        {value: 'Sales and Business Development', viewValue: 'Sales and Business Development'},
-        {value: 'Science and research', viewValue: 'Science and research'},
-        {value: 'Technology and Digital Media', viewValue: 'Technology and Digital Media'},
-        {value: 'Training and Education', viewValue: 'Training and Education'}
-                    ];
+    industries = [
+        {value: 'Accounts', viewValue: 'Accounting and Finance'},
+        {value: 'Administrative', viewValue: 'Administrative '},
+        {value: 'Arts', viewValue: 'Arts, Media and Entertainment'},
+        {value: 'customerService', viewValue: 'Customer Service'},
+       ];
 
-    roles = [
-            {value: 'Accounting Anaylst', viewValue: 'Accounting Anaylst'},
-            {value: 'Assistant Accounting Manager', viewValue: 'Assistant Accounting Manager'},
-            {value: 'Administrative Assistant', viewValue: 'Culture and leisure'},
-            {value: 'Administrative Clerk', viewValue: 'Administrative Clerk'},
-            {value: 'Administration Manager', viewValue: 'Administration Manager'},
-            {value: 'Graphic Arts Technician', viewValue: 'Graphic Arts Technician'},
-            {value: 'Customer Service Agent', viewValue: 'Customer Service Agent'},
-            {value: 'Customer Service Analyst', viewValue: 'Customer Service Analyst'},
-            {value: 'Engineering Technologist', viewValue: 'Engineering Technologist'},
-            {value: 'Engineering Analyst', viewValue: 'Engineering Anaylst'},
-            {value: 'Data Scientist', viewValue: 'Data Scientist'},
-            {value: 'Environmental Scientist', viewValue: 'Environmental Scientist'},
-            {value: 'Technology Architect', viewValue: 'Technology Architect'},
-            {value: 'Technology Lead', viewValue: 'Technology Lead'},
-            {value: 'Training Consultant', viewValue: 'Training Consultant'}
-              ];
+    salaries= [
+            {value: '50000', viewValue: '40k-50k'},
+            {value: '60000', viewValue: '50k-60k'},
+            {value: '70000', viewValue: '60k-70k'},
+            {value: '80000', viewValue: '70k-80k'},
+            {value: '90000', viewValue: '90k-100k'},
+            {value: '100000', viewValue: '100k-110k'},
+            {value: '110000', viewValue: '110k-120k'},
+            {value: '120000', viewValue: '120k-130k'},
+            {value: '130000', viewValue: '130k-140k'},
+            {value: '140000', viewValue: '140k-150k'},
+            {value: '150000', viewValue: '150k-160k'}
+            
+          ];
 
     locations = [
       {value: 'Toronto', viewValue: 'Toronto'},
       {value: 'Vancouver', viewValue: 'Vancouver'},
       {value: 'Montreal', viewValue: 'Montreal'},
+      {value: 'Calgary', viewValue: 'Calgary'},
+      {value: 'Edmonton', viewValue: 'Edmonton'},
+      {value: 'Ottawa', viewValue: 'Ottawa'},
+      {value: 'Windsor', viewValue: 'Windsor'},
+      {value: 'Winnipeg', viewValue: 'Montreal'},
     ];
         openDialog(): void {
         let dialogRef = this.dialog.open(LoginComponent, {
@@ -120,11 +111,11 @@ export class DashboardComponent
     });
   }
   search(){
-    console.log(this.city,this.industry,this.role);
+    console.log(this.city,this.industry,this.salary);
     this.storage.set('city', this.city);
     this.storage.set('industry', this.industry);
-    this.storage.set('role', this.role);
-     this.router.navigate(['/list', this.industry,this.role,this.city]);
+    this.storage.set('salary', this.salary);
+     this.router.navigate(['/list', this.industry,this.salary,this.city]);
   }
   logout() {
      this.auth.logout();

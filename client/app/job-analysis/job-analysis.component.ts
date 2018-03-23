@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase,AngularFireList,AngularFireAction } from 'angularfire2/database';
 import {Job} from '../shared/models/jobs';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
@@ -16,7 +16,6 @@ export class JobAnalysisComponent implements OnInit {
   public role:string;
   jobs: Observable<Job[]>;
   jobList:Job[] =[];
-  cities:any[]=[];
   data:any;
   public barLabels:string[] = [];
   public barChartType:string = 'bar';
@@ -24,6 +23,11 @@ export class JobAnalysisComponent implements OnInit {
   public showBarChart:boolean = false;
   public showRoleChart:boolean = false;
   public averagesalaryChart:boolean = false;
+  jobRef: AngularFireList<any>;
+  jobs$: Observable<any[]>;
+  allCity: Observable<any[]>;
+  showCrimeChart:boolean = false;
+  cities:Array<any>=[];
   public barChartData:any[] = [
     {data: [], label: 'Total Jobs'}
   ];
@@ -54,22 +58,77 @@ export class JobAnalysisComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-
-  constructor(private db: AngularFireDatabase, @Inject(LOCAL_STORAGE) private storage: WebStorageService , ) {
-   this.jobs = db.list('jobs').valueChanges();
-    this.jobs.subscribe(Job=>{
-    this.jobList = Job;
-    this.barChart(this.jobList);
-    this.roleWiseDonughtChart(this.jobList);
+public crimeChartData:Array<any> = [
+    {data: [], label: 'CrimeRate'},
+  ];
+  public crimeChartLabels:Array<any> = ['Calgary','Edmonton','Montreal','Ottawa','Toronto','Vancouver','Windsor','Winnipeg'];
+  public crimeChartOptions:any = {
+    responsive: true
+  };
+  public crimeChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // dark grey
+      backgroundColor: 'rgba(77,83,96,0.2)',
+      borderColor: 'rgba(77,83,96,1)',
+      pointBackgroundColor: 'rgba(77,83,96,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  public crimeChartLegend:boolean = true;
+  public crimeChartType:string = 'line';
+  public pieChartLabels:string[] = [];
+  public pieChartData:number[] = [];
+  public pieChartType:string = 'pie';
+  showPieChart:boolean = false;
+  constructor(private db: AngularFireDatabase, @Inject(LOCAL_STORAGE) private storage: WebStorageService ) {
+  
    
-   })
-   }
+}
  
   ngOnInit() {
 
     this.city=this.storage.get('city');
     this.industry=this.storage.get('industry');
     this.role=this.storage.get('role');
+    this.jobRef = this.db.list('/jobs/'+this.industry);
+    this.jobs$ = this.jobRef.snapshotChanges().map(changes => {
+        return changes.map(c => ({ key: c.payload.key, val:c.payload.val() 
+    }));
+   });
+    this.jobs$.subscribe(data=>{
+    _.forEach(data,(d)=>{
+      this.jobList.push(d.val);
+    })
+      console.log(this.jobList);
+      this.barChart(this.jobList);
+       this.roleWiseDonughtChart(this.jobList);
+    })
+    this.allCity = this.db.list('/satisfaction').valueChanges();
+    
+    this.allCity.subscribe(data=>{
+      console.log(data);
+      this.cities = data;
+      this.crimeChart(this.cities);
+    })
+   
+  
   }
     
     barChart(jobs){
@@ -89,6 +148,7 @@ export class JobAnalysisComponent implements OnInit {
         })
         
         averageSalary = averageSalary/ key.length;
+        averageSalary = parseFloat(averageSalary.toFixed(2))
         console.log(averageSalary);
         this.salaryData[0].data.push(averageSalary);
         this.barLabels.push(value);
@@ -110,13 +170,31 @@ export class JobAnalysisComponent implements OnInit {
       //chart assignment starts here
       _.forEach(this.data,(key,value) => {
         console.log(key);
+        let averageSalary = 0;
+        _.forEach(key,(k)=>{
+          averageSalary +=Number(k.Salary);
+        })  
+        averageSalary = averageSalary/ key.length;
+        averageSalary = parseFloat(averageSalary.toFixed(2))
+        console.log(averageSalary);
+
         this.roleChartLabels.push(value);
+        this.pieChartLabels.push(value);
         this.roleChartData.push(key.length);
+        this.pieChartData.push(averageSalary);    
+
               
       })
       console.log(this.roleChartLabels);
 
       this.showRoleChart=true;
+      this.showPieChart = true;
+    }
+    crimeChart(city){
+      _.forEach(city,(c)=>{
+        this.crimeChartData[0].data.push(c.crime);
+    })
+    this.showCrimeChart = true;
     }
   public barChartOptions:any = {
     scaleShowVerticalLines: false,

@@ -16,7 +16,7 @@ const routes: Routes = [
    component: DashboardComponent },
    {
         component: ListComponent,
-        path: 'list/:industry/:role/:city'
+        path: 'list/:industry/:salary/:city'
      },
      {
         component: JobAnalysisComponent,
