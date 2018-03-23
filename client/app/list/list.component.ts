@@ -7,6 +7,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
 import * as _ from 'lodash';
+import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -35,7 +36,7 @@ export class ListComponent implements OnInit {
 
 
     constructor(public db: AngularFireDatabase,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,public snackBar: MatSnackBar) {
       this.route.params.subscribe( params => {
       this.industry = params.industry;
     		this.salary = params.salary;
@@ -50,7 +51,7 @@ export class ListComponent implements OnInit {
     _.forEach(data,(d)=>{
       this.jobList.push(d.val);
     })
-      console.log(this.jobList);
+     
       this.dataSource.data = this.jobList;
     })
     this.cityRef = db.list('/satisfaction/'+this.city);
@@ -64,7 +65,9 @@ export class ListComponent implements OnInit {
   }
 
     ngOnInit() {
-    
+    setTimeout(() => {
+        this.snackBar.open('Login To View Analytics For Your Selection','Undo');
+    }, 1000);
   }
   
     satisfaction(item){

@@ -116,14 +116,14 @@ public crimeChartData:Array<any> = [
     _.forEach(data,(d)=>{
       this.jobList.push(d.val);
     })
-      console.log(this.jobList);
+      
       this.barChart(this.jobList);
        this.roleWiseDonughtChart(this.jobList);
     })
     this.allCity = this.db.list('/satisfaction').valueChanges();
     
     this.allCity.subscribe(data=>{
-      console.log(data);
+      
       this.cities = data;
       this.crimeChart(this.cities);
     })
@@ -137,10 +137,10 @@ public crimeChartData:Array<any> = [
       {
         return job.city
       })
-      console.log(this.data);
+    
       //chart assignment starts here
       _.forEach(this.data,(key,value) => {
-        console.log(key);
+        
         let averageSalary = 0;
         _.forEach(key,(k)=>{
           averageSalary +=Number(k.Salary);
@@ -149,14 +149,12 @@ public crimeChartData:Array<any> = [
         
         averageSalary = averageSalary/ key.length;
         averageSalary = parseFloat(averageSalary.toFixed(2))
-        console.log(averageSalary);
+        
         this.salaryData[0].data.push(averageSalary);
         this.barLabels.push(value);
         this.barChartData[0].data.push(key.length);
               
       })
-      console.log(this.barLabels);
-      console.log(this.salaryData[0]);
       this.showBarChart=true;
       this.averagesalaryChart=true;
     }
@@ -166,17 +164,17 @@ public crimeChartData:Array<any> = [
       {
         return job.Title
       })
-      console.log(this.data);
+   
       //chart assignment starts here
       _.forEach(this.data,(key,value) => {
-        console.log(key);
+        
         let averageSalary = 0;
         _.forEach(key,(k)=>{
           averageSalary +=Number(k.Salary);
         })  
         averageSalary = averageSalary/ key.length;
         averageSalary = parseFloat(averageSalary.toFixed(2))
-        console.log(averageSalary);
+        
 
         this.roleChartLabels.push(value);
         this.pieChartLabels.push(value);
@@ -185,8 +183,6 @@ public crimeChartData:Array<any> = [
 
               
       })
-      console.log(this.roleChartLabels);
-
       this.showRoleChart=true;
       this.showPieChart = true;
     }
