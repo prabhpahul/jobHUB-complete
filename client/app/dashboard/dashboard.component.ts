@@ -35,6 +35,7 @@ export class DashboardComponent
         {value: 'Administrative', viewValue: 'Administrative '},
         {value: 'Arts', viewValue: 'Arts, Media and Entertainment'},
         {value: 'customerService', viewValue: 'Customer Service'},
+        {value: 'Information_Technology', viewValue: 'Information_Technology'}
        ];
 
     salaries= [

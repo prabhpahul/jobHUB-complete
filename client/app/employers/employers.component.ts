@@ -29,6 +29,7 @@ industries = [
         {value: 'Administrative', viewValue: 'Administrative '},
         {value: 'Arts', viewValue: 'Arts, Media and Entertainment'},
         {value: 'customerService', viewValue: 'Customer Service'},
+         {value: 'Information_Technology', viewValue: 'Information_Technology'}
        ];
 
     roles = [
@@ -44,6 +45,8 @@ industries = [
             {value: 'Engineering Analyst', viewValue: 'Engineering Anaylst'},
             {value: 'Data Scientist', viewValue: 'Data Scientist'},
             {value: 'Environmental Scientist', viewValue: 'Environmental Scientist'},
+            {value: 'Java Developer', viewValue: 'Java Developer'},
+            {value: 'Web Developer', viewValue: 'Web Developer'},
             {value: 'Technology Architect', viewValue: 'Technology Architect'},
             {value: 'Technology Lead', viewValue: 'Technology Lead'},
             {value: 'Training Consultant', viewValue: 'Training Consultant'}
